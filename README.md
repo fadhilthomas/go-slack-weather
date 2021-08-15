@@ -12,16 +12,21 @@ Send current weather updates from OpenWeatherMap API to your Slack profile statu
 ## Contents
 
 - [Setup](#setup)
+- [Change Update Period](#change-update-period)
 
 ---
 
 ## Setup
 * Fork this repository.
-* Set these environment variable in GitHub repository secrets.
+* Set these environment variables in GitHub repository secrets.
 
 | **Variable** | **Value** |
 |--|--|
-| WEATHER_API | Get OpenWeatherMap API [here](https://home.openweathermap.org/users/sign_up). |
-| CITY | Find your city id [here](http://bulk.openweathermap.org/sample/). |
-| TIMEZONE | Find your timezone city [here](https://www.iana.org/time-zones). |
+| WEATHER_API | Get OpenWeatherMap API at `https://home.openweathermap.org/users/sign_up`. |
+| CITY | Find your city id at `http://bulk.openweathermap.org/sample/`. |
+| TIMEZONE | Find your timezone city at `https://www.iana.org/time-zones`. |
 | SLACK_TOKEN | Your Slack User OAuth Token. |
+
+## Change Update Period
+* Change `cron` value inside `.github/workflows/go-slack-weather.yml`
+* If you need help to set the value, visit `https://crontab.guru`
