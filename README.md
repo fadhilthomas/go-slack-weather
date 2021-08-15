@@ -28,5 +28,5 @@ Send current weather updates from OpenWeatherMap API to your Slack profile statu
 | SLACK_TOKEN | Your Slack User OAuth Token. |
 
 ## Change Update Period
-* Change `cron` value inside `.github/workflows/go-slack-weather.yml`
-* If you need help to set the value, visit `https://crontab.guru`
+* Change `cron` value inside `.github/workflows/go-slack-weather.yml`.
+* If you need help to set the value, visit `https://crontab.guru`.
