@@ -16,7 +16,7 @@ Send current weather updates from OpenWeatherMap API to your Slack profile statu
 
 ---
 
-## Setup
+## Setup this amazing project
 * Fork this repository.
 * Set these environment variables in GitHub repository secrets.
 
