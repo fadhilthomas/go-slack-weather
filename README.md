@@ -22,11 +22,11 @@ Send current weather updates from OpenWeatherMap API to your Slack profile statu
 
 | **Variable** | **Value** |
 |--|--|
-| WEATHER_API | Get OpenWeatherMap API at `https://home.openweathermap.org/users/sign_up`. |
-| CITY | Find your city id at `http://bulk.openweathermap.org/sample/`. |
-| TIMEZONE | Find your timezone city at `https://www.iana.org/time-zones`. |
+| WEATHER_API | Get OpenWeatherMap API at [`https://home.openweathermap.org/users/sign_up`](https://home.openweathermap.org/users/sign_up). |
+| CITY | Find your city id at [`http://bulk.openweathermap.org/sample/`](http://bulk.openweathermap.org/sample/). |
+| TIMEZONE | Find your timezone city at [`https://www.iana.org/time-zones`](https://www.iana.org/time-zones). |
 | SLACK_TOKEN | Your Slack User OAuth Token. |
 
 ## Change Update Period
 * Change `cron` value inside `.github/workflows/go-slack-weather.yml`.
-* If you need help to set the value, visit `https://crontab.guru`.
+* If you need help to set the value, visit [`https://crontab.guru`](https://crontab.guru).
