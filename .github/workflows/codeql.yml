@@ -1,15 +1,14 @@
-name: "CodeQL"
+name: codeql
 
 on:
   push:
     branches: [ main ]
   pull_request:
-    # The branches below must be a subset of the branches above
     branches: [ main ]
 
 jobs:
   analyze:
-    name: Analyze
+    name: analyze
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -22,17 +21,16 @@ jobs:
         language: [ 'go' ]
 
     steps:
-    - name: Checkout repository
+    - name: checkout repository
       uses: actions/checkout@v2
 
-    # Initializes the CodeQL tools for scanning.
-    - name: Initialize CodeQL
+    - name: initialize codeql
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
 
-    - name: Autobuild
+    - name: autobuild
       uses: github/codeql-action/autobuild@v1
 
-    - name: Perform CodeQL Analysis
+    - name: perform codeql analysis
       uses: github/codeql-action/analyze@v1

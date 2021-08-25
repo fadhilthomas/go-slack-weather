@@ -24,7 +24,9 @@ func weatherRequest(url string) ([]byte, error) {
 		return nil, err
 	}
 
-	defer res.Body.Close()
+	defer func() {
+		err = res.Body.Close()
+	}()
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
@@ -53,7 +55,9 @@ func slackRequest(urlString string, profile model.SlackProfile) ([]byte, error) 
 		return nil, err
 	}
 
-	defer res.Body.Close()
+	defer func() {
+		err = res.Body.Close()
+	}()
 	body, err := ioutil.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
@@ -80,7 +84,7 @@ func getWeather() (model.CurrentWeatherResponse, error) {
 		log.Error().Str("file", "main").Msg(err.Error())
 		return weatherResponse, err
 	}
-	log.Debug().Str("file", "main").Msg(fmt.Sprintf("%s", weatherResponse))
+	log.Debug().Str("file", "main").Msg(fmt.Sprintf("%v", weatherResponse))
 	return weatherResponse, nil
 }
 
@@ -98,7 +102,7 @@ func postSlackStatus(emoji string, text string) error {
 		log.Error().Str("file", "main").Msg(err.Error())
 		return err
 	}
-	log.Debug().Str("file", "main").Msg(fmt.Sprintf("%s", res))
+	log.Debug().Str("file", "main").Msg(fmt.Sprintf("%v", res))
 	return nil
 }
 
@@ -115,7 +119,7 @@ func transEmoji(icon string) string {
 		"50": ":cloud:",
 	}
 	emoji := emojiList[icon]
-	log.Debug().Str("file", "main").Msg(fmt.Sprintf("%s", icon))
+	log.Debug().Str("file", "main").Msg(icon)
 	return emoji
 }
 
