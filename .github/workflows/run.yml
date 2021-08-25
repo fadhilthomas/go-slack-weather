@@ -1,11 +1,11 @@
+name: run
+
 on:
   push:
     branches:
       - main
   schedule:
     - cron: '*/30 * * * *'
-
-name: go-slack-weather
 
 jobs:
   build:

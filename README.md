@@ -1,5 +1,5 @@
 # go-slack-weather
-[![go-slack-weather](https://github.com/fadhilthomas/go-slack-weather/actions/workflows/go-slack-weather.yml/badge.svg?branch=main)](https://github.com/fadhilthomas/go-slack-weather/actions/workflows/go-slack-weather.yml)
+[![go-slack-weather](https://github.com/fadhilthomas/go-slack-weather/actions/workflows/run.yml/badge.svg?branch=main)](https://github.com/fadhilthomas/go-slack-weather/actions/workflows/go-slack-weather.yml)
 [![license](https://img.shields.io/badge/license-MIT-_red.svg)](https://opensource.org/licenses/MIT)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/fadhilthomas/go-slack-weather/issues)
 
