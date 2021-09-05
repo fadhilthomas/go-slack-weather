@@ -18,7 +18,8 @@ jobs:
           go-version: '1.16'
       - run: go run main.go
         env:
-          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           CITY: ${{ secrets.CITY }}
+          MESSAGE: ${{ secrets.MESSAGE }}
+          SLACK_TOKEN: ${{ secrets.SLACK_TOKEN }}
           TIMEZONE: ${{ secrets.TIMEZONE }}
           WEATHER_API: ${{ secrets.WEATHER_API }}
