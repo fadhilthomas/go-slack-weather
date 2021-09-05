@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"encoding/json"
-	"flag"
 	"fmt"
 	"github.com/fadhilthomas/go-slack-weather/config"
 	"github.com/fadhilthomas/go-slack-weather/model"
@@ -36,7 +35,7 @@ func weatherRequest(url string) ([]byte, error) {
 }
 
 func slackRequest(urlString string, profile model.SlackProfile) ([]byte, error) {
-	slackToken := config.Get(config.SLACK_TOKEN)
+	slackToken := config.GetStr(config.SLACK_TOKEN)
 	profileJson, err := json.Marshal(profile)
 
 	if err != nil {
@@ -67,8 +66,8 @@ func slackRequest(urlString string, profile model.SlackProfile) ([]byte, error) 
 }
 
 func getWeather() (model.CurrentWeatherResponse, error) {
-	cityId := config.Get(config.CITY)
-	apiKey := config.Get(config.WEATHER_API)
+	cityId := config.GetStr(config.CITY)
+	apiKey := config.GetStr(config.WEATHER_API)
 	var weatherResponse model.CurrentWeatherResponse
 
 	urlString := fmt.Sprintf("https://api.openweathermap.org/data/2.5/weather?id=%s&appid=%s&units=metric", cityId, apiKey)
@@ -124,7 +123,7 @@ func transEmoji(icon string) string {
 }
 
 func timeIn(t time.Time) (time.Time, error) {
-	timezone := config.Get(config.TIMEZONE)
+	timezone := config.GetStr(config.TIMEZONE)
 	loc, err := time.LoadLocation(timezone)
 	if err == nil {
 		t = t.In(loc)
@@ -133,15 +132,16 @@ func timeIn(t time.Time) (time.Time, error) {
 }
 
 func main() {
-	debug := flag.Bool("debug", false, "sets log level to debug")
-	flag.Parse()
-	zerolog.SetGlobalLevel(zerolog.InfoLevel)
-	if *debug {
+	config.Set(config.LOG_LEVEL, "info")
+	config.Set(config.MESSAGE, "")
+	if config.GetStr(config.LOG_LEVEL) == "debug" {
 		zerolog.SetGlobalLevel(zerolog.DebugLevel)
+	} else {
+		zerolog.SetGlobalLevel(zerolog.InfoLevel)
 	}
 
 	hour, err := timeIn(time.Now())
-	if err != nil{
+	if err != nil {
 		return
 	}
 
@@ -155,7 +155,8 @@ func main() {
 
 	if icon != "" {
 		emoji := transEmoji(icon)
-		err := postSlackStatus(emoji, fmt.Sprintf("%s - %.2f°C - %s", weatherMain, temp, hour.Format("15:04")))
+		customMessage := config.GetStr(config.MESSAGE)
+		err := postSlackStatus(emoji, fmt.Sprintf("%s - %s - %.2f°C - %s", customMessage, weatherMain, temp, hour.Format("15:04")))
 		if err != nil {
 			return
 		}

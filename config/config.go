@@ -1,8 +1,10 @@
 package config
 
 var base = mergeConfig(
-	slackConfig,
-	weatherConfig,
 	cityConfig,
+	logLevelConfig,
+	messageConfig,
+	slackConfig,
 	timezoneConfig,
+	weatherConfig,
 )
