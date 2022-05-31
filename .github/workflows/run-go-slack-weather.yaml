@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - main
-#   schedule:
-#       - cron: '*/30 * * * *'
+  schedule:
+      - cron: '*/30 * * * *'
 
 jobs:
   run-go-slack-weather:
