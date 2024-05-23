@@ -2,4 +2,4 @@ module github.com/fadhilthomas/go-slack-weather
 
 go 1.16
 
-require github.com/rs/zerolog v1.31.0
+require github.com/rs/zerolog v1.33.0
